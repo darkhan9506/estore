@@ -21,17 +21,21 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
           vertical: 10,
         ),
         child: Text(
-          'Dara Store',
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 24,
-            fontFamily: 'Avenir',
-            fontWeight: FontWeight.bold,
-          ),
+          title,
+          style: Theme.of(context)
+              .textTheme
+              .headline2!
+              .copyWith(color: Colors.white),
         ),
       ),
       iconTheme: IconThemeData(color: Colors.black),
-      actions: [IconButton(onPressed: () {}, icon: Icon(Icons.favorite))],
+      actions: [
+        IconButton(
+            onPressed: () {
+              Navigator.pushNamed(context, '/wishlist');
+            },
+            icon: Icon(Icons.favorite))
+      ],
     );
   }
 
