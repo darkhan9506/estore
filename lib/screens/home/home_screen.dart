@@ -1,5 +1,7 @@
-// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors
+// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors,  avoid_unnecessary_containers, prefer_const_literals_to_create_immutables
 
+import 'package:carousel_slider/carousel_slider.dart';
+import 'package:estore/models/models.dart';
 import 'package:estore/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
@@ -16,10 +18,21 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(
-        title: "Dara Store",
-      ),
+      appBar: CustomAppBar(title: "XoXo Brands"),
       bottomNavigationBar: CustomNavBar(),
+      body: Container(
+        child: CarouselSlider(
+          options: CarouselOptions(
+            aspectRatio: 1.5,
+            viewportFraction: 0.9,
+            enlargeCenterPage: true,
+            enlargeStrategy: CenterPageEnlargeStrategy.height,
+          ),
+          items: Category.categories
+              .map((category) => HeroCorouselCard(category: category))
+              .toList(),
+        ),
+      ),
     );
   }
 }
