@@ -20,18 +20,23 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: CustomAppBar(title: "XoXo Brands"),
       bottomNavigationBar: CustomNavBar(),
-      body: Container(
-        child: CarouselSlider(
-          options: CarouselOptions(
-            aspectRatio: 1.5,
-            viewportFraction: 0.9,
-            enlargeCenterPage: true,
-            enlargeStrategy: CenterPageEnlargeStrategy.height,
+      body: Column(
+        children: [
+          Container(
+            child: CarouselSlider(
+              options: CarouselOptions(
+                aspectRatio: 1.5,
+                viewportFraction: 0.9,
+                enlargeCenterPage: true,
+                enlargeStrategy: CenterPageEnlargeStrategy.height,
+              ),
+              items: Category.categories
+                  .map((category) => HeroCorouselCard(category: category))
+                  .toList(),
+            ),
           ),
-          items: Category.categories
-              .map((category) => HeroCorouselCard(category: category))
-              .toList(),
-        ),
+          SectionTitle(title: 'RECOMMENDED'),
+        ],
       ),
     );
   }
