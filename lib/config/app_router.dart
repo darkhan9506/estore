@@ -1,5 +1,6 @@
 // ignore_for_file: no_duplicate_case_values, prefer_const_constructors
 
+import 'package:estore/models/models.dart';
 import 'package:estore/screens/screens.dart';
 import 'package:flutter/material.dart';
 
@@ -15,7 +16,7 @@ class AppRouter {
       case CartScreen.routeName:
         return CartScreen.route();
       case CatalogScreen.routeName:
-        return CatalogScreen.route();
+        return CatalogScreen.route(category: settings.arguments as Category);
       case ProductScreen.routeName:
         return ProductScreen.route();
       case WishlistScreen.routeName:
